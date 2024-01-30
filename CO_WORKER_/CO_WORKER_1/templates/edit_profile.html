@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil Düzenle</title>
+  <style>
+    body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/static/static/login.jpg'); /* Replace 'home.jpg' with the path to your background image */
+            background-size: cover; /* Resmin tüm sayfayı kaplamasını sağlar */
+    background-repeat: no-repeat; /* Resmin tekrarlanmasını engeller */
+    background-attachment: fixed; /* Arka planın kaydırma ile sabit kalmasını sağlar */
+    height: 100%; /* Sayfanın tamamını kaplar */
+    width: 100%; /* Sayfanın tamamını kaplar */
+}
+
+form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.form-group input[type='text'],
+.form-group input[type='password'],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form-group input[type='submit'] {
+  width: auto;
+  padding: 10px 20px;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-group input[type='submit']:hover {
+  background-color: #4cae4c;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #ddd;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #ccc;
+}
+
+  </style>
+
+</head>
+<body>
+
+  <a href="{{ url_for('login') }}" class="back-button">&#8592; Geri</a>
+  <form method="post">
+    <h1>Profil Düzenle</h1>
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.email.label }}
+      {{ form.email }}
+    
+    <div class="form-group">
+      {{ form.idea.label }}
+      {{ form.idea }}
+    </div>
+    <div class="form-group">
+      {{ form.city.label }}
+      {{ form.city }}
+      <div class="form-group">
+        {{ form.district.label }}
+        {{ form.district }}
+      </div>
+    <div class="form-group">
+      {{ form.skills.label }}
+      {{ form.skills }}
+    </div>
+    <div class="form-group">
+      {{ form.interests.label }}
+      {{ form.interests }}
+    </div>
+    <div class="form-group">
+      {{ form.work_style.label }}
+      {{ form.work_style }}
+    </div>
+    <div class="form-group">
+      {{ form.submit }}
+    </div>
+
+  </form>
+</body>
+</html>
