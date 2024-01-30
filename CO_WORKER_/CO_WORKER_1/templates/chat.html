@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Soru Sorma Uygulaması</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('/static/static/login.jpg'); /* Replace 'home.jpg' with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+
+        }
+        .container {
+            width: 80%;
+            max-width: 500px; /* Küçültülmüş konteyner genişliği */
+            text-align: center;
+            
+        }
+        h1 {
+            color: #333;
+            font-size: 1.5rem; /* Küçültülmüş başlık boyutu */
+            margin-bottom: 1.5rem;
+        }
+        form {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px #6e464d;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #6e464d;
+            border-radius: 4px;
+            width: calc(100% - 110px); /* Daha küçük metin kutusu */
+            font-size: 0.9rem;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #6e464d; /* Belirtilen renk kodu */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        button:hover {
+            background-color: #5d3f44; /* Koyulaştırılmış hover rengi */
+        }
+        #answer-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px #6e464d ;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 20px;
+        }
+        #answer {
+            color: #666;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Co-Worker Proje Fikirleri Desteği</h1>
+        <form id="question-form">
+            <label for="question">Sorunuzu Girin:</label>
+            <input type="text" id="question" name="question" required>
+            <button type="submit">Sor</button>
+        </form>
+        <div id="answer-container">
+            <h2>Cevap:</h2>
+            <p id="answer"></p>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = "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"
+        function scrollToTop() {
+        window.scrollTo(0, 0);
+        }
+
+        document.getElementById("question-form").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const question = document.getElementById("question").value;
+
+    fetch("/api/sor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: question })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Sunucu tarafında bir hata oluştu.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById("answer").textContent = data.cevap;
+    })
+    .catch(error => {
+        console.error("Hata:", error);
+        document.getElementById("answer").textContent = "Bir hata oluştu: " + error.message;
+    });
+});
+</script>
+</body>
+</html>
