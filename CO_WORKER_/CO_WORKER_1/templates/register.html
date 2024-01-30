@@ -1,0 +1,161 @@
+<!-- templates/register.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kayıt Formu</title>
+  <style>
+          body {
+        height: 100%;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        font-family: Arial, sans-serif;
+        margin-left:37%;
+        padding: 0;
+        background-image: url('/static/static/home.jpg'); /* Replace 'home.jpg' with the path to your background image */
+        background-size: cover;
+        background-position: center;
+        
+        align-items: center;
+        justify-content: center;
+        
+        color: white;
+      }
+      .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+        max-width: 1200px;
+        min-height: 100vh; /* Container'ın ekranı doldurmasını sağlar */
+        
+      }
+      .form-box {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 0 20px;
+        width: 300px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        margin: 10px 0; /* Form kutuları arasında boşluk sağlar */
+        margin-left:10px;
+        
+        overflow-y: auto;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      h2.login {
+      color: #FFF;
+      margin-bottom: 20px;
+      text-align: right;
+      }
+
+      .login-box {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      
+    }
+    
+      .logo {
+        width: 450px; /* İstenilen genişlik */
+        height: auto; /* Otomatik yükseklik ayarı, oranı korur */
+        float: left;
+        margin-right: 20px;
+        margin-left:30;
+        border-radius: 20px;
+        
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="submit"] {
+        width: 90%;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+        border: none;
+        box-sizing: border-box;
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+      input[type="submit"] {
+        background-color: #ff758c; /* Adjust the color to match your theme */
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #f64668; /* Darker shade for hover effect */
+      }
+      a {
+        text-decoration: none;
+        color: #ff758c; /* Adjust the color to match your theme */
+        text-align: center;
+        display: block;
+        margin-top: 20px;
+      }
+      a:hover {
+        color: #f64668;
+      }
+    </style>
+
+</head>
+<body>
+  
+  <form method="post">
+    <div class="form-box">
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+    <div class="form-group">{{ form.username.label }} {{ form.username }}<br /></div>
+    
+    {{ form.password.label }} {{ form.password }}<br />
+    {{ form.hidden_tag() }} {{ form.email.label }} {{ form.email }}<br />
+    {{ form.idea.label }} {{ form.idea}}<br />
+    {{ form.city.label }} {{ form.city }}<br />
+    {{ form.district.label }} {{ form.district }}<br />
+    {{ form.skills.label }} {{ form.skills }}<br />
+    {{ form.interests.label }} {{ form.interests }}<br />
+    {{ form.work_style.label }} {{ form.work_style }}<br />
+    {{ form.submit }}
+ 
+  </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
