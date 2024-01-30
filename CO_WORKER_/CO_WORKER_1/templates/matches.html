@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eşleşmeler</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+        <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const cityFilterForm = document.getElementById('city-filter-form');
+          cityFilterForm.addEventListener('submit', function (e) {
+              e.preventDefault();
+              const selectedCity = document.getElementById('city-filter').value;
+              filterMatchesByCity(selectedCity);
+          });
+          function filterMatchesByCity(city) {
+              const userItems = document.querySelectorAll('.user-item');
+              userItems.forEach(function (userItem) {
+                  const userCity = userItem.getAttribute('data-city');
+                  if (city === 'tum-sehirler' || userCity === city) {
+                      userItem.style.display = 'block';
+                  } else {
+                      userItem.style.display = 'none';
+                  }
+              });
+          }
+
+          filterMatchesByCity('tum-sehirler');
+      });
+  </script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:white; /* Soft Earth Tone Background */
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/static/login.jpg'); /* Replace 'home.jpg' with the path to your background image */
+            background-size: cover; /* Resmin tüm sayfayı kaplamasını sağlar */
+            background-repeat: no-repeat; /* Resmin tekrarlanmasını engeller */
+            background-attachment: fixed; /* Arka planın kaydırma ile sabit kalmasını sağlar */
+            height: 100%; /* Sayfanın tamamını kaplar */
+            width: 100%; /* Sayfanın tamamını kaplar */
+
+        }
+
+        nav {
+            
+            background-color: #6f6e6c;
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 10px 0;
+           
+      backdrop-filter: blur(10px);
+      
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        /* Nav kısmındaki yazıların rengini beyaz yap */
+        nav ul li a {
+          color: white;
+          text-decoration: none;
+        }
+
+        /* Nav kısmındaki yazıların hover (üzerine gelindiğinde) rengini değiştir */
+        nav ul li a:hover {
+          color: #d7d4d5; /* İsteğe bağlı bir renk seçimi */
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: white;
+            
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #b5838d; /* Earthy Pink Color */
+        }
+
+        .user-list ul {
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          padding: 0;
+          justify-content: space-around;
+          margin: 0; /* Üst ve alt boşluğu sıfırlar */
+        }
+
+
+        .user-list li {
+            margin: 10px;
+            list-style: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px; /* Rounded Borders for a Modern Look */
+            text-align: center;
+            width: 20%; /* Adjusted for 4 cards per row */
+            background-color: #ffffff; /* White Background for Cards */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding some shadow for depth */
+        }
+
+        .user-list h3 {
+            font-size: 20px; /* Slightly larger font size for names */
+            margin: 10px 0;
+            color: #6f6e6c; /* Soft Purple Color */
+        }
+
+        .user-list p {
+            font-size: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #9d8189; /* Soft Earth Tone Link Color */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            background-color: #d6ace6; /* Soft Lilac Footer Background */
+            color: white;
+        }
+        /* Filtreleme formunu düzenle */
+        .filter-form {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Şehir filtresi sol tarafta olacak */
+            margin-bottom: 20px; /* Diğer içerikten alt boşluk bırakmak için */
+        }
+
+        /* Şehir filtresi kutusu için stil */
+        .filter-container {
+            display: flex;
+            align-items: center;
+            margin-right: 10px; /* Şehir seçme alanı ile düğme arasında boşluk bırakır */
+        }
+
+        /* Şehir filtresi için stil */
+        #city-filter {
+            padding: 10px; /* Şehir seçme alanının içeriğinden biraz daha fazla boşluk bırakır */
+            font-size: 14px; /* Yazı boyutunu küçült */
+        }
+
+        /* Filtreleme düğmesi için stil */
+        .filter-button {
+            background-color: #6f6e6c; /* Arkaplan rengi */
+            color: white; /* Yazı rengi */
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px; /* Daha küçük bir düğme yapmak için */
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Hover üzerine gelindiğinde renk değişimi */
+        }
+
+        .filter-button:hover {
+            background-color: #9d8189; /* Hover rengi */
+        }
+
+
+
+        
+    </style>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong style="color:white;">Eşleşmeler</strong></li>
+        </ul>
+        <ul>
+            <li><a href="{{ url_for('login') }}">Anasayfa</a></li>
+            
+        </ul>
+    </nav>
+
+    <main class="container">
+      <section>
+          <h2>Eşleşmeler Listesi</h2>
+          <form id="city-filter-form" class="filter-form">
+
+  <div class="filter-container">
+    <label for="city-filter">Şehir Filtresi:</label>
+    <select id="city-filter" name="city">
+        <option value="tum-sehirler">Tüm Şehirler</option>
+        <option value="istanbul">İstanbul</option>
+        <option value="ankara">Ankara</option>
+        <option value="Adana">Adana</option>
+  <option value="Adıyaman">Adıyaman</option>
+  <option value="Afyonkarahisar">Afyonkarahisar</option>
+  <option value="Ağrı">Ağrı</option>
+  <option value="Aksaray">Aksaray</option>
+  <option value="Amasya">Amasya</option>
+  <option value="Antalya">Antalya</option>
+  <option value="Ardahan">Ardahan</option>
+  <option value="Artvin">Artvin</option>
+  <option value="Aydın">Aydın</option>
+  <option value="Balıkesir">Balıkesir</option>
+  <option value="Bartın">Bartın</option>
+  <option value="Batman">Batman</option>
+  <option value="Bayburt">Bayburt</option>
+  <option value="Bilecik">Bilecik</option>
+  <option value="Bingöl">Bingöl</option>
+  <option value="Bitlis">Bitlis</option>
+  <option value="Bolu">Bolu</option>
+  <option value="Burdur">Burdur</option>
+  <option value="Bursa">Bursa</option>
+  <option value="Çanakkale">Çanakkale</option>
+  <option value="Çankırı">Çankırı</option>
+  <option value="Çorum">Çorum</option>
+  <option value="Denizli">Denizli</option>
+  <option value="Diyarbakır">Diyarbakır</option>
+  <option value="Düzce">Düzce</option>
+  <option value="Edirne">Edirne</option>
+  <option value="Elazığ">Elazığ</option>
+  <option value="Erzincan">Erzincan</option>
+  <option value="Erzurum">Erzurum</option>
+  <option value="Eskişehir">Eskişehir</option>
+  <option value="Gaziantep">Gaziantep</option>
+  <option value="Giresun">Giresun</option>
+  <option value="Gümüşhane">Gümüşhane</option>
+  <option value="Hakkari">Hakkari</option>
+  <option value="Hatay">Hatay</option>
+  <option value="Iğdır">Iğdır</option>
+  <option value="Isparta">Isparta</option>
+  <option value="İzmir">İzmir</option>
+  <option value="Kahramanmaraş">Kahramanmaraş</option>
+  <option value="Karabük">Karabük</option>
+  <option value="Karaman">Karaman</option>
+  <option value="Kars">Kars</option>
+  <option value="Kastamonu">Kastamonu</option>
+  <option value="Kayseri">Kayseri</option>
+  <option value="Kilis">Kilis</option>
+  <option value="Kırıkkale">Kırıkkale</option>
+  <option value="Kırklareli">Kırklareli</option>
+  <option value="Kırşehir">Kırşehir</option>
+  <option value="Kocaeli">Kocaeli</option>
+  <option value="Konya">Konya</option>
+  <option value="Kütahya">Kütahya</option>
+  <option value="Malatya">Malatya</option>
+  <option value="Manisa">Manisa</option>
+  <option value="Mardin">Mardin</option>
+  <option value="Mersin">Mersin</option>
+        <!-- Diğer şehir seçenekleri -->
+    </select>
+</div>
+                </select>
+            </div>
+            <button type="submit" id="filter-button" class="filter-button">Filtrele</button>
+        </form>
+        
+          
+          <div class="user-list">
+              {% if matches %}
+                  <ul>
+                      {% for user_profile, score in matches %}
+                          <li class="user-item" data-city="{{ user_profile.city | lower }}">
+                              <div>
+                                  <h3>{{ user_profile.username }}</h3>
+                                  <p><strong>E-Mail:</strong> <a href="mailto:{{ user_profile.email }}">{{ user_profile.email }}</a></p>
+                                  <p><strong>Fikir:</strong> {{ user_profile.idea | join(", ") }}</p>
+                                  <p class="user-city"><strong>İl:</strong> {{ user_profile.city }}</p>
+                                  
+                                  <p><strong>Yetenekler:</strong> {{ user_profile.skills | join(", ") }}</p>
+                                  <p><strong>İlgi Alanları:</strong> {{ user_profile.interests | join(", ") }}</p>
+                                  <p><strong>Çalışma Tarzı:</strong> {{ user_profile.work_style }}</p>
+                                  <p><strong>Puan:</strong> {{ score }}</p>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <p>Eşleşme bulunamadı.</p>
+              {% endif %}
+          </div>
+      </section>
+  </main>
+
+    <footer class="container">
+        <small><a href="#">Gizlilik Politikası</a> • <a href="#">Kullanım Koşulları</a></small>
+    </footer>
+
+
+
+</body>
+</html>
