@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('/static/static/login.jpg'); /* Replace 'home.jpg' with the path to your background image */
+            background-size: cover; /* Resmin tüm sayfayı kaplamasını sağlar */
+    background-repeat: no-repeat; /* Resmin tekrarlanmasını engeller */
+    background-attachment: fixed; /* Arka planın kaydırma ile sabit kalmasını sağlar */
+    height: 100%; /* Sayfanın tamamını kaplar */
+    width: 100%; /* Sayfanın tamamını kaplar */
+    }
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .profile-info {
+      margin-bottom: 20px;
+      color: #666;
+    }
+    .link-button {
+      display: block;
+      width: auto;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #5cb85c;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .link-button:hover {
+      background-color: #4cae4c;
+    }
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
+    }
+
+    .back-button {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #ddd;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #ccc;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <a href="{{ url_for('login') }}" class="back-button">&#8592; Geri</a>
+  <div class="container">
+    <h1>{{ current_user.username }}'ın Profili</h1>
+    <p class="profile-info">E-Mail: {{ current_user.email }}</p>
+    <p class="profile-info">Fikir: {{ current_user.idea }}</p>
+    <p class="profile-info">City: {{ current_user.city }}</p>
+    <p class="profile-info">District: {{ current_user.district }}</p>
+    <p class="profile-info">Yetenekler: {{ current_user.skills }}</p>
+    <p class="profile-info">İlgi Alanları: {{ current_user.interests }}</p>
+    <p class="profile-info">Çalışma Tarzı: {{ current_user.work_style }}</p>
+    <a href="{{ url_for('edit_profile') }}" class="link-button">Profil Düzenle</a>
+    <a href="{{ url_for('logout') }}" class="link-button">Çıkış Yap</a>
+  </div>
+</body>
+</html>
