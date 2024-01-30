@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CoWorker - Ana Sayfa</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+      }
+      .container {
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        padding-top: 50px;
+      }
+      .form-box {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+      }
+      form {
+        margin-top: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .link {
+        text-align: center;
+        margin-top: 15px;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-box">
+        <h2>Kayıt Ol</h2>
+        <form method="post" action="/register">
+          <!-- Form alanları -->
+          <div class="form-group">
+            <label for="username">Kullanıcı Adı:</label>
+            <input type="text" id="username" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <input type="submit" value="Kayıt Ol" />
+        </form>
+      </div>
+      <div class="form-box">
+        <h2>Giriş Yap</h2>
+        <form method="post" action="/login">
+          <!-- Form alanları -->
+          <div class="form-group">
+            <label for="login-username">Kullanıcı Adı:</label>
+            <input type="text" id="login-username" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Şifre:</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              required
+            />
+          </div>
+          <input type="submit" value="Giriş Yap" />
+        </form>
+      </div>
+      <div class="link">
+        <a href="/password-reset">Şifremi Unuttum</a>
+      </div>
+    </div>
+  </body>
+</html>
