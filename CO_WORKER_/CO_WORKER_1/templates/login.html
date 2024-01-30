@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <title>Co-Worker Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('/static/static/login.jpg'); /* Replace 'home.jpg' with the path to your background image */
+        background-size: cover;
+        background-position: center;
+        /*display: flex; */
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        
+    }
+    .title {
+      text-align: center;
+      font-size: 32px;
+      margin: 40px 0;
+    }
+    .sidebar {
+      height: 100vh;
+      width: 200px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: white;
+      overflow-x: hidden;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-content {
+      flex-grow: 1;
+      padding-top: 190px;
+    }
+    .sidebar a {
+      padding: 20px 40px;
+      /*
+      font-size: 20px;
+      
+      
+      /*transition: background-color 0.2s; */
+      text-decoration: none;
+      color: white;
+      background-color: #6e464d;
+      padding-top: 18px;
+      display: block;
+      text-align: center;
+      border: 1px solid white;
+      width: 100%;
+      
+    }
+    .sidebar a:hover {
+      background-color: #5d3f44;
+      width: 100%;
+    }
+    .logout-button {
+     
+      background-color: #6e464d;
+      text-align: center;
+      width: 100%;
+    }
+    .container {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    footer {
+      text-align: center;
+      
+      font-size: 14px;
+    }
+
+    .orta {
+      text-align: center;
+      font-size: 22px;
+      margin: 50px 0;
+      padding-left: 90px;
+      color:black;
+      font-family: Arial, sans-serif;
+
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-content">
+      <a href="{{ url_for('show_matches') }}">Eşleştirme</a>
+      <a href="{{ url_for('chat_page') }}">Chatbot</a>
+      <!-- Diğer sidebar bağlantıları -->
+    </div>
+    <a href="{{ url_for('logout') }}" class="logout-button">Çıkış Yap</a>
+  </div>
+
+
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>Co-Worker</strong></li>
+    </ul>
+    <ul>
+      <li><a href="{{ url_for('edit_profile') }}" class="link-button">Profil Düzenle</a></li>
+      
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <h1 class="title">Co-Worker</h1>
+        <p class="orta">Yaratıcılığınızı ve tutkunuzu, takımınızın enerjisiyle birleştirin, projelerinizi sadece yönetmekle kalmayın, aynı zamanda onları hayal ettiğiniz en büyük vizyonlarla gerçeğe dönüştürün.Başlayın, paylaşın ve takımınızla birlikte büyüleyici başarıların kilidini açın!</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <small><a href="#">Hakkımızda</a> • <a href="#">İletişim</a></small>
+  </footer>
+</body>
+</html>
